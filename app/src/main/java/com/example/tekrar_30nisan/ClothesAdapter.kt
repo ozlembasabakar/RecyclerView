@@ -8,36 +8,38 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tekrar_30nisan.databinding.ItemClothesBinding
 
-class ClothesAdapter(val list: List<ClothesModel>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ClothesAdapter(private val list: List<ClothesModel>) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-            val clothesBinding = DataBindingUtil.inflate<ViewDataBinding>(
-                LayoutInflater.from(parent.context), R.layout.item_clothes, parent, false
-            )
-            return DataViewHolder(clothesBinding)
-        }
-
-        override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-            (holder as DataViewHolder).onBind(list.get(position))
-
-            holder.itemView.setOnClickListener {
-                Toast.makeText(it.context,"${list.get(position).name}",Toast.LENGTH_SHORT).show()
-            }
-
-        }
-
-        override fun getItemCount(): Int {
-            return list.size
-        }
-
-        class DataViewHolder(val clothesBinding: ViewDataBinding) :
-            RecyclerView.ViewHolder(clothesBinding.root) {
-
-            fun onBind(dataModel: ClothesModel) {
-                val binding = clothesBinding as ItemClothesBinding
-                binding.setVariable(BR.item_programs, dataModel)
-            }
-
-        }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        val clothesBinding = DataBindingUtil.inflate<ViewDataBinding>(
+            LayoutInflater.from(parent.context), R.layout.item_clothes, parent, false
+        )
+        return DataViewHolder(clothesBinding)
     }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        (holder as DataViewHolder).onBind(list.get(position))
+
+        holder.itemView.setOnClickListener {
+            Toast.makeText(it.context, list[position].name, Toast.LENGTH_SHORT).show()
+
+        }
+
+    }
+
+    override fun getItemCount(): Int {
+        return list.size
+    }
+
+    class DataViewHolder(val clothesBinding: ViewDataBinding) :
+        RecyclerView.ViewHolder(clothesBinding.root) {
+
+        fun onBind(dataModel: ClothesModel) {
+            val binding = clothesBinding as ItemClothesBinding
+            binding.setVariable(BR.item_programs, dataModel)
+        }
+
+    }
+}
