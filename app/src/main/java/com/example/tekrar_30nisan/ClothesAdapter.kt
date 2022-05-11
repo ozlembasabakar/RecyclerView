@@ -19,10 +19,10 @@ class ClothesAdapter(val list: List<ClothesModel>) : RecyclerView.Adapter<Recycl
         }
 
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-            (holder as DataViewHolder).onBind(list.get(position))
+            (holder as DataViewHolder).onBind(list[position])
 
             holder.itemView.setOnClickListener {
-                Toast.makeText(it.context,"${list.get(position).name}",Toast.LENGTH_SHORT).show()
+                Toast.makeText(it.context,list[position].name,Toast.LENGTH_SHORT).show()
             }
 
         }
