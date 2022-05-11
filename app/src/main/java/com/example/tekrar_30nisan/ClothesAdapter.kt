@@ -9,6 +9,7 @@ import com.example.tekrar_30nisan.databinding.ItemClothesBinding
 
 class ClothesAdapter(val list: List<ClothesModel>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
             val clothesBinding = DataBindingUtil.inflate<ViewDataBinding>(
                 LayoutInflater.from(parent.context), R.layout.item_clothes, parent, false

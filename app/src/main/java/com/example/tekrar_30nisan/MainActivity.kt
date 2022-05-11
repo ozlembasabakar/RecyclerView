@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         list.add(ClothesModel("2020 2 Weeks Shred Challenge", "14 days", "30-65 min/day", "Release date: Aug 2020", R.drawable.program12))
 
         val adapter = ClothesAdapter(list)
-        val gridLayoutManager = GridLayoutManager(this, 1)
+        val gridLayoutManager = GridLayoutManager(this, 2)
         activityMainBinding.recyclerView.layoutManager = gridLayoutManager
         activityMainBinding.setVariable(BR.adapter, adapter)
     }
