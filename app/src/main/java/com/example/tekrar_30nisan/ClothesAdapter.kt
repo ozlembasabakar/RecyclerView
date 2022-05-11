@@ -2,6 +2,7 @@ package com.example.tekrar_30nisan
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +20,11 @@ class ClothesAdapter(val list: List<ClothesModel>) : RecyclerView.Adapter<Recycl
 
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
             (holder as DataViewHolder).onBind(list.get(position))
+
+            holder.itemView.setOnClickListener {
+                Toast.makeText(it.context,"${list.get(position).name}",Toast.LENGTH_SHORT).show()
+            }
+
         }
 
         override fun getItemCount(): Int {
